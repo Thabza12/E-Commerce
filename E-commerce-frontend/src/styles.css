@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Dancing_Script;
+    src: url(src/assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf) format("truetype");
+}
+
+h1{
+    font-family: Dancing_Script;
+}

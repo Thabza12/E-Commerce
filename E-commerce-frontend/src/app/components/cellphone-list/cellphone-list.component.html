@@ -1,0 +1,22 @@
+<table border="1">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Manufacture</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cellphone of cellphones">
+        <td>
+          <img [src]="cellphone.imageUrl" height="100px"/>
+        </td>
+        <td>{{cellphone.modelName}}</td>
+        <td>{{cellphone.manufactureName}}</td>
+        <td>{{cellphone.description}}</td>
+        <td>{{cellphone.unitPrice | currency: 'R'}}</td>
+      </tr>
+    </tbody>
+  </table>
