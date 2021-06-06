@@ -1,4 +1,4 @@
-<table border="1">
+<!-- <table border="1" style="text-align: center;">
     <thead>
       <tr>
         <th></th>
@@ -19,4 +19,30 @@
         <td>{{cellphone.unitPrice | currency: 'R'}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+
+  <div class="row">
+    <div class="col mb-5" *ngFor="let cellphone of cellphones">
+      <div class="card h-100" >
+          <!-- Product image-->
+          <img class="card-img-top" [src]="cellphone.imageUrl">
+          <!-- Product details-->
+          <div class="card-body p-4">
+              <div class="text-center">
+                  <!-- Product name-->
+                  <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
+                  <!-- Product manufacture-->
+                  <h5 class="fw-bolder">{{cellphone.manufactureName}}</h5>
+                  <!-- Product description-->
+                  <h5 class="fw-bolder">{{cellphone.description}}</h5>
+                  <!-- Product price-->
+                  {{cellphone.unitPrice | currency: 'R'}}
+              </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add Cart</a></div>
+          </div>
+      </div>
+    </div>
+  </div>

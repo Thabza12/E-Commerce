@@ -1,3 +1,6 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 @font-face {
     font-family: Dancing_Script;
     src: url(src/assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf) format("truetype");
@@ -6,3 +9,7 @@
 h1{
     font-family: Dancing_Script;
 }
+
+/* body{
+    padding-top: 56px;
+} */

@@ -5,6 +5,7 @@ import { CellphoneService } from 'src/app/services/cellphone.service';
 @Component({
   selector: 'app-cellphone-list',
   templateUrl: './cellphone-list.component.html',
+  // templateUrl: './cellphone-grid.component.html',
   styleUrls: ['./cellphone-list.component.css']
 })
 export class CellphoneListComponent implements OnInit {
