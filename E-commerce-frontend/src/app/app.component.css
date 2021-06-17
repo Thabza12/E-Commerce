@@ -1,0 +1,35 @@
+.search-box{
+    position: absolute;
+    left: 900px;
+    transform: translate(-50%, -50%);
+    background: lightpink;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search-box:hover > .search-txt{
+  width: 180px;
+  padding: 0 6px;
+}
+
+.search-btn{
+  /* background: #d39e00; */
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 50%; */
+}
+
+.search-txt{
+  border: none;
+  background: white;
+  outline: none;
+  padding: 0;
+  transition: .4s;
+  font-size:medium;
+  width: 0px;
+}
+
+.py-4{
+  justify-items: center;
+}

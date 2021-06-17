@@ -33,8 +33,8 @@ public class Cellphone {
     @Column(name = "date_created")
     private Date createdOn;
 
-//    @Column(name = "last_updated")
-//    private Date updatedOn;
+    @Column(name = "last_update")
+    private Date updatedOn;
 
 
     @ManyToOne
@@ -42,3 +42,5 @@ public class Cellphone {
     private Manufacture manufacture;
 
 }
+
+

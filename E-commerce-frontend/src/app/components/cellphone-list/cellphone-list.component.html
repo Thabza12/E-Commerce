@@ -1,10 +1,13 @@
-<!-- <table border="1" style="text-align: center;">
+<!-- <table style="text-align: center;">
     <thead>
       <tr>
         <th></th>
         <th>Name</th>
+        <br>
         <th>Manufacture</th>
+        <br>
         <th>Description</th>
+        <br>
         <th>Price</th>
       </tr>
     </thead>
@@ -14,32 +17,46 @@
           <img [src]="cellphone.imageUrl" height="100px"/>
         </td>
         <td>{{cellphone.modelName}}</td>
+        <br>
         <td>{{cellphone.manufactureName}}</td>
-        <td>{{cellphone.description}}</td>
+        <br>
+        <td id="description">{{cellphone.description}}</td>
+        <br>
         <td>{{cellphone.unitPrice | currency: 'R'}}</td>
       </tr>
     </tbody>
   </table> -->
 
+  <!-- <script>
+    var descriptionList = document.getElementById("description")
+
+    var list = description.split(" ")
+    console.log(list)
+
+  </script> -->
+
+
+  
+
   <div class="row">
     <div class="col mb-5" *ngFor="let cellphone of cellphones">
-      <div class="card h-100" >
-          <!-- Product image-->
-          <img class="card-img-top" [src]="cellphone.imageUrl">
-          <!-- Product details-->
+      <div class="card h-100" style="width: 250px;">
+          <!-- Product image -->
+          <img class="card-img-top" [src]="cellphone.imageUrl" >
+          <!-- Product details -->
           <div class="card-body p-4">
               <div class="text-center">
-                  <!-- Product name-->
+                  <!-- Product name -->
                   <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
-                  <!-- Product manufacture-->
+                  <!-- Product manufacture -->
                   <h5 class="fw-bolder">{{cellphone.manufactureName}}</h5>
-                  <!-- Product description-->
+                  <!-- Product description -->
                   <h5 class="fw-bolder">{{cellphone.description}}</h5>
-                  <!-- Product price-->
+                  <!-- Product price -->
                   {{cellphone.unitPrice | currency: 'R'}}
               </div>
           </div>
-          <!-- Product actions-->
+          <!-- Product actions -->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add Cart</a></div>
           </div>

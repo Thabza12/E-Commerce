@@ -1,0 +1,11 @@
+.row{
+    position: relative;
+    width: 96%;
+    right: -60px;
+    
+}
+
+table{
+    position: relative;
+    left: 180px;
+}
