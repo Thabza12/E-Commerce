@@ -5,12 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 
-
 import { AppComponent } from './app.component';
 import { CellphoneListComponent } from './components/cellphone-list/cellphone-list.component';
 import { CellphoneService } from './services/cellphone.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SpecComponent } from './components/spec/spec.component';
 
 
 @NgModule({
@@ -18,7 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     CellphoneListComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    SpecComponent
+    
   ],
   imports: [
     BrowserModule,

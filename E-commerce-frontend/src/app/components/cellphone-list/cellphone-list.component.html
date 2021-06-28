@@ -50,10 +50,12 @@
                   <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
                   <!-- Product manufacture -->
                   <h5 class="fw-bolder">{{cellphone.manufactureName}}</h5>
-                  <!-- Product description -->
-                  <h5 class="fw-bolder">{{cellphone.description}}</h5>
+                  <!-- Product specs -->
+                  <button (click) = handleSpec() class="btn btn-success" routerLink="/spec/" roterLinkActive="bg-primary">Specs</button>
+                  <div>
                   <!-- Product price -->
                   {{cellphone.unitPrice | currency: 'R'}}
+                  </div>
               </div>
           </div>
           <!-- Product actions -->

@@ -1,5 +1,6 @@
 export interface Cellphone {
 
+    id:number;
     modelName: string;
     manufactureName: string;
     description: string;
