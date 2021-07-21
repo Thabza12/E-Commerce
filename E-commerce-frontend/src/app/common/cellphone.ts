@@ -1,6 +1,6 @@
 export interface Cellphone {
 
-    id:number;
+    id: number;
     modelName: string;
     manufactureName: string;
     description: string;
@@ -9,4 +9,6 @@ export interface Cellphone {
     unitsInStock: number;
     createdOn: Date;
     updatedOn: Date;
+    specId: number;
+    active: boolean;
 }

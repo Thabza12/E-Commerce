@@ -17,4 +17,7 @@ public interface CellphoneRepository extends JpaRepository<Cellphone, Long> {
     @RestResource(path = "spec-id")
     Page<Cellphone> findBySpecId(@Param("id") Long Id, Pageable pageable);
 
+    @RestResource(path = "cellphone")
+    Page<Cellphone> findById(@Param("id") Long Id, Pageable pageable);
+
 }

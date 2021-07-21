@@ -10,7 +10,10 @@ import { CellphoneListComponent } from './components/cellphone-list/cellphone-li
 import { CellphoneService } from './services/cellphone.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SpecComponent } from './components/spec/spec.component';
+import { FormsModule } from '@angular/forms';
+import { SpecService } from './services/spec.service';
+import { SpecViewComponent } from './components/spec-view/spec-view.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 @NgModule({
@@ -19,18 +22,22 @@ import { SpecComponent } from './components/spec/spec.component';
     CellphoneListComponent,
     PageNotFoundComponent,
     FooterComponent,
-    SpecComponent
+    SpecViewComponent,
+    MessagesComponent
+    
     
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     // RouterModule.forRoot(routes)
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
 
   ],
   providers: [
-    CellphoneService
+    CellphoneService,
+    SpecService
   ],
   bootstrap: [AppComponent]
 })

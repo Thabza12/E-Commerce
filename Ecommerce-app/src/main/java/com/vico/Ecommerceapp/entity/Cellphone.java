@@ -1,6 +1,8 @@
 package com.vico.Ecommerceapp.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,6 +14,8 @@ import java.util.Date;
 @Data
 @Table(name = "tbl_cellphone")
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cellphone {
 
     @Id
@@ -41,11 +45,11 @@ public class Cellphone {
 
 
     @ManyToOne
-    @JoinColumn(name = "manufacture_id", nullable = false)
+    @JoinColumn(name = "manufacture_id")
     private Manufacture manufacture;
 
     @OneToOne
-    @JoinColumn(name = "spec_id", nullable = false)
+    @JoinColumn(name = "spec_id")
     private Spec spec;
 
 }

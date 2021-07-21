@@ -1,4 +1,5 @@
 export interface Spec {
+    
 
     id: number;
     model: string;
@@ -7,4 +8,6 @@ export interface Spec {
     video: string;
     sensors: string;
     memory: string;
+    active: boolean;
+
 }
