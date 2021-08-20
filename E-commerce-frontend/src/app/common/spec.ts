@@ -1,13 +1,13 @@
-export interface Spec {
+export class Spec {
     
 
-    id: number;
-    model: string;
-    operatingSystem: string;
-    camera: string;
-    video: string;
-    sensors: string;
-    memory: string;
-    active: boolean;
+    id!: string;
+    model!: string;
+    operatingSystem!: string;
+    camera!: string;
+    video!: string;
+    sensors!: string;
+    memory!: string;
+    active!: boolean;
 
 }

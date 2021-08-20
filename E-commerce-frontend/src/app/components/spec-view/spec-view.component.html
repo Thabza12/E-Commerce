@@ -1,0 +1,34 @@
+<!-- <div *ngIf="cellphone"> -->
+
+  <!-- <div>
+    <img class="card-img-top" [src]="cellphone.imageUrl" >
+  </div> -->
+<div class="col-md-5 offset-md-3">
+  <div *ngFor="let spec of specs"> 
+      <div>
+        <label><b>Model: </b></label> {{spec.model}}
+      </div>
+      <div>
+        <label><b>Operating Sysem: </b></label> {{spec.operatingSystem}}
+      </div>
+      <div>
+        <label><b>Camera: </b></label> {{spec.camera}}
+      </div>
+      <div>
+        <label><b>Video: </b></label> {{spec.video}}
+      </div>
+      <div>
+        <label><b>Sensors: </b></label> {{spec.sensors}}
+      </div>
+      <div>
+        <label><b>Memory: </b></label> {{spec.memory}}
+      </div>  
+      <button (click) = "deleteSpec(spec.id)" class = "btn btn-danger">Delete</button>
+      <button (click) = "updateSpec(spec.id)" class = "btn btn-info" style="margin-left: 10px;">Update</button>
+      <!-- <div>
+        <button (click)="list()" class="btn btn-primary">Back to cellphone List</button>
+      </div> -->
+  </div>
+</div>
+
+<!-- </div> -->

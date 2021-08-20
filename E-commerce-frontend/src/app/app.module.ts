@@ -14,6 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { SpecService } from './services/spec.service';
 import { SpecViewComponent } from './components/spec-view/spec-view.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { CreateCellphoneComponent } from './components/create-cellphone/create-cellphone.component';
+import { UpdateCellphoneComponent } from './components/update-cellphone/update-cellphone.component';
+import { UpdateSpecViewComponent } from './components/update-spec-view/update-spec-view.component';
+import { CreateSpecViewComponent } from './components/create-spec-view/create-spec-view.component';
+import { SpecViewDetailsComponent } from './components/spec-view-details/spec-view-details.component';
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { MessagesComponent } from './components/messages/messages.component';
     PageNotFoundComponent,
     FooterComponent,
     SpecViewComponent,
-    MessagesComponent
+    MessagesComponent,
+    CreateCellphoneComponent,
+    UpdateCellphoneComponent,
+    UpdateSpecViewComponent,
+    CreateSpecViewComponent,
+    SpecViewDetailsComponent
     
     
   ],

@@ -9,18 +9,17 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 @Table(name = "tbl_spec")
-@ToString
+@Data
 @NoArgsConstructor
-@AllArgsConstructor 
+@AllArgsConstructor
+@ToString
 public class Spec {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String model;
-//    private String manufacture;
     private String operatingSystem;
     private String camera;
     private String video;

@@ -11,40 +11,46 @@ import { Spec } from '../common/spec';
 })
 export class SpecService {
 
-  private specUrl= "http://localhost:8080/api/v1/specs/";
-  private cellUrl= "http://localhost:8080/api/v1/cellphones/"
+  private specUrl= "http://localhost:8080/api/v1/specs";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  getSpec(id: number): Observable<any> {
-    return this.httpClient.get(`${this.cellUrl}/${id}/spec`);
+  getSpecs(): Observable<Spec[]>{
+    return this._http.get<GetResponseSpecs>(this.specUrl).pipe(
+      map(response => response._embedded.specs)
+    );
+  
   }
 
-  createSpec(cellphone: Object): Observable<Object> {
-    return this.httpClient.post(`${this.specUrl}`, cellphone);
+  createSpec(spec: Spec): Observable<Object>{
+    return this._http.post(`${this.specUrl}/add`, spec);
   }
 
-  updateSpec(id: number, value: any): Observable<Object> {
-    return this.httpClient.put(`${this.specUrl}/${id}`, value);
+  getSpecById(id: string): Observable<any>{
+    const specViewUrl = `${this.specUrl}/search/spec-view-details?id=${id}`;
+    return this._http.get<GetSpecResponse>(specViewUrl).pipe(
+      map(response => response._embedded.spec)
+    )
   }
 
-  deleteSpec(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.specUrl}/${id}`, { responseType: 'text' });
+  updateSpec(id: string, spec: Spec): Observable<Object>{
+    return this._http.put(`${this.specUrl}/${id}`, spec);
   }
 
-  getSpecs(): Observable<any> {
-    return this.httpClient.get(`${this.specUrl}`);
+  deleteSpec(id: string): Observable<Object>{
+    return this._http.delete(`${this.specUrl}/${id}`);
   }
-
-  // getSpecs(): Observable<Spec[]>{
-  //   return this.httpClient.get<GetResponseSpecs>(this.specUrl).pipe(
-  //     map(response => response._embedded.specs)
-  //   ) 
-  // }
 }
 
+
 interface GetResponseSpecs{
-  _embedded:{
+  _embedded: {
     specs: Spec[];
+  }
+}
+
+interface GetSpecResponse{
+  _embedded: {
+    spec: Spec;
   }
 }

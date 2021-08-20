@@ -1,0 +1,39 @@
+<div class="col-md-5 offset-md-3">
+    <h3>Cellphone Form</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="modelName">Model name</label>
+            <input type="text" class="form-control" id="modelName"
+                [(ngModel)] = "cellphone.modelName" name="modelName">
+        </div>
+    
+        <div class="form-group">
+            <label for="manufactureName">Manufacture name</label>
+            <input type="text" class="form-control" id="manufactureName"
+                [(ngModel)] = "cellphone.manufactureName" name="manufactureName">
+        </div>
+    
+        <div class="form-group">
+            <label for="unitPrice">Price</label>
+            <input type="text" class="form-control" id="unitPrice"
+                [(ngModel)] = "cellphone.unitPrice" name="unitPrice">
+        </div>
+
+        <div class="form-group">
+            <label for="unitsInStock">Units available</label>
+            <input type="text" class="form-control" id="unitsInStock"
+                [(ngModel)] = "cellphone.unitsInStock" name="unitsInStock">
+        </div>
+
+        <div class="form-group">
+            <label for="specId">Spec ID</label>
+            <input type="text" class="form-control" id="specId"
+                [(ngModel)] = "cellphone.specId" name="specId">
+        </div>
+
+        
+    <br>
+        <button class="btn btn-success" type="submit">Submit</button>
+    
+    </form>
+</div>

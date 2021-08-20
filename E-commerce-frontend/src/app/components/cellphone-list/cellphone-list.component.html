@@ -1,58 +1,15 @@
-<!-- <table style="text-align: center;">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <br>
-        <th>Manufacture</th>
-        <br>
-        <th>Description</th>
-        <br>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cellphone of cellphones">
-        <td>
-          <img [src]="cellphone.imageUrl" height="100px"/>
-        </td>
-        <td>{{cellphone.modelName}}</td>
-        <br>
-        <td>{{cellphone.manufactureName}}</td>
-        <br>
-        <td id="description">{{cellphone.description}}</td>
-        <br>
-        <td>{{cellphone.unitPrice | currency: 'R'}}</td>
-      </tr>
-    </tbody>
-  </table> -->
-
-  <!-- <script>
-    var descriptionList = document.getElementById("description")
-
-    var list = description.split(" ")
-    console.log(list)
-
-  </script> -->
-
-
   
-  
-
   <div class="row">
-    <div class="col mb-5" (click)=onSelect(cellphone) *ngFor="let cellphone of cellphones, 
-      let i = index;">
+    <div class="col mb-5" *ngFor="let cellphone of cellphones" >
       
       <div class="card h-100" style="width: 250px;">
           <!-- Product image -->  
-          <a routerLink="/${id}/spec">
+          <a href="spec-view-details/{{cellphone.id}}">
             <img class="card-img-top" [src]="cellphone.imageUrl" >
           </a>
           <!-- Product details -->
           <div class="card-body p-4">
               <div class="text-center">
-                  <!-- Product id -->
-                  <h5>{{cellphone.id}}</h5>
                   <!-- Product name -->
                   <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
                   <!-- Product manufacture -->
@@ -60,13 +17,16 @@
                   <!-- Product specs -->
                   <!-- <app-spec></app-spec> -->
                   <!-- <button (click) = handleSpec() class="btn btn-success">Specs</button> -->
-                  <button (click) = spec(cellphone.id) class="btn btn-info">Specs</button>
+                  <button (click) = "specViewDetails(cellphone.id)" class="btn btn-info">Specs</button>
+                  <button (click) = "updateCellphone(cellphone.id)" class = "btn btn-info" style="margin-left: 10px;">Update</button>
+                  <button (click) = "deleteCellphone(cellphone.id)" class = "btn btn-danger" style="margin-top: 10px;">Delete</button>
                   <!-- <a class="btn btn-sm text-white btn-primary" routerLink="/spec-view/2">Specs</a> -->
                   <!-- <button (click)="getSpec(id)" class="btn btn-info" >specs</button> -->
                   <div>
                   <!-- Product price -->
                   {{cellphone.unitPrice | currency: 'R'}}
                   </div>
+                
                   
               </div>
           </div>
