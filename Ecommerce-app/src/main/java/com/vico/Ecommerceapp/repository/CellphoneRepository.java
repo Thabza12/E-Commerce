@@ -17,22 +17,15 @@ public interface CellphoneRepository extends JpaRepository<Cellphone, String> {
 //    @RestResource(path = "manufacture-id")
 //    Page<Cellphone>findByManufactureId(@Param("id") Long id, Pageable pageable);
 //
-//    @RestResource(path = "spec-id")
-//    Page<Cellphone> findBySpecId(@Param("id") Long Id, Pageable pageable);
-//
+
     @RestResource(path = "cellphone")
     Page<Cellphone> findById(@Param("id") String Id, Pageable pageable);
 
-//    @RestResource(path = "update-cellphone")
-//    Cellphone save(@Param("id") String Id, @RequestBody Cellphone cellphone);
+    @RestResource(path = "search-model")
+    Page<Cellphone> findByModelName(@Param("modelName") String keyword, Pageable pageable);
 
-    @RestResource(path = "delete")
-    Page<Cellphone> deleteById(@Param("id") String Id, Pageable pageable);
-
-//    @RestResource(path = "add")
-//    Cellphone save(@RequestBody Cellphone cellphone);
+    @RestResource(path = "search-manufacture")
+    Page<Cellphone> findByManufactureName(@Param("manufacture") String keyword, Pageable pageable);
 
 
-//    @RestResource(exported = false)
-//    void delete(String id);
 }

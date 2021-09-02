@@ -21,30 +21,30 @@ export class SpecViewComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.getSpecs()
+    // this.getSpecs()
   }
 
 
-  getSpecs(){
-    this._specService.getSpecs().subscribe(
-      data =>{
-        this.specs = data;
-      }
-    );
-  }
+  // getSpecs(){
+  //   this._specService.getSpecs().subscribe(
+  //     data =>{
+  //       this.specs = data;
+  //     }
+  //   );
+  // }
 
-  updateSpec(id: string){
+  updateSpec(id: number){
     this._router.navigate(['update-spec', id])
   }
 
-  deleteSpec(id: string){
-    this._specService.deleteSpec(id).subscribe(
-      data =>{
-        console.log(data);
-        this.getSpecs();
-      }
-    )
-  }
+  // deleteSpec(id: number){
+  //   this._specService.deleteSpec(id).subscribe(
+  //     data =>{
+  //       console.log(data);
+  //       this.getSpecs();
+  //     }
+  //   )
+  // }
 
   
 

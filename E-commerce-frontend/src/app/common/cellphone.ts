@@ -1,6 +1,6 @@
 export class Cellphone {
 
-    id!: string;
+    id!: number;
     modelName!: string;
     manufactureName!: string;
     description!: string;

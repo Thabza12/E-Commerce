@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'spec-view-details/:id', component: SpecViewDetailsComponent},
     { path: 'create-spec-view', component: CreateSpecViewComponent},
     { path: 'create-cellphone', component: CreateCellphoneComponent},
+    { path: 'search/:keyword', component: CellphoneListComponent},
 
 
     { path: '**', component: PageNotFoundComponent }

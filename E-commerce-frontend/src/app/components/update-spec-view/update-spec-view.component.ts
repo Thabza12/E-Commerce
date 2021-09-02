@@ -13,6 +13,8 @@ export class UpdateSpecViewComponent implements OnInit {
   id!: string;
   spec: Spec = new Spec();
   currentCellphoneId!: string;
+  currentSpecId!: number;
+  specs: Spec[] = []
 
   constructor(private _specService: SpecService,
               private _activatedRoute: ActivatedRoute,
@@ -34,33 +36,40 @@ export class UpdateSpecViewComponent implements OnInit {
   }
 
   getSpec(){
-    const hasCellphoneId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
+    const hasSpecId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
 
-    if(this.currentCellphoneId){
-      this._activatedRoute.snapshot.paramMap.get('id');
+    if (hasSpecId) {
+      this.currentSpecId = +this._activatedRoute.snapshot.paramMap.get;
+      
+    } else {
+      this.currentSpecId = 1
+      
     }
 
-    this._specService.getSpecById(this.currentCellphoneId).subscribe(
-      data => this.spec = data
+    this._specService.getSpecs(this.currentSpecId).subscribe(
+      data => this.specs = data
     )
   }
 
-  updateSpec(){
-    this._specService.updateSpec(this.id, this.spec)
-    .subscribe(data => {
-      console.log(data);
-      this.spec = new Spec();
-      this.goToSpecview()
-    }, err => console.log(err))
-  }
+  // updateSpec(){
+  //   this._specService.updateSpec(this.id, this.spec)
+  //   .subscribe(data => {
+  //     console.log(data);
+  //     this.spec = new Spec();
+  //     this.goToSpecview()
+  //   }, err => console.log(err))
+  // }
 
   goToSpecview(){
     this._router.navigate(['/spec-view'])
   }
 
-  onSubmit(){
-    console.log(this.spec);
-    this.updateSpec();
-  }
+  // onSubmit(){
+  //   console.log(this.spec);
+  //   this.updateSpec();
+  // }
 
+  onSubmit(){
+    
+  }
 }

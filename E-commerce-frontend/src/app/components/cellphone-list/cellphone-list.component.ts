@@ -18,38 +18,88 @@ export class CellphoneListComponent implements OnInit {
 
   // cellphones!: Observable<Cellphone[]>;
   cellphones: Cellphone[] = [];
-  id!: string;
+  id!: number;
+  searchMode!: boolean;
+  currentSpecId!: number;
+  keyword!: string
+  searchValue!: string;
     
 
   constructor(private _cellphoneService: CellphoneService,
-              private _router: Router) {}
+              private _router: Router,
+              private _activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getCellphones();
+    // this.getCellphones();
+    this.listCellphones();
   }
 
-  getCellphones(){
-    this._cellphoneService.getCellphonesList().subscribe(
-      data =>{
+  listCellphones(){
+    this.searchMode = this._activatedRoute.snapshot.paramMap.has('keyword');
+
+    if (this.searchMode) {
+      this.handleSearchCellphones();
+      
+    } else {
+      this.handleCellphoneList();
+      
+    }
+  }
+
+  handleCellphoneList(){
+    const hasSpecId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
+
+    if (hasSpecId) {
+      this.currentSpecId = +this._activatedRoute.snapshot.paramMap.get;
+      
+    } else {
+      this.currentSpecId = 1
+      
+    }
+
+    this._cellphoneService.getCellphonesList(this.currentSpecId).subscribe(
+      data => this.cellphones = data
+    )
+  }
+
+  handleSearchCellphones(){
+    const keyword = this._activatedRoute.snapshot.paramMap.get('keyword');
+
+    this._cellphoneService.searchCellphone(this.keyword).subscribe(
+      data => {
         this.cellphones = data;
-      }
-    );
-  }
-
-  updateCellphone(id: string){
-    this._router.navigate(['update-cellphone', id])
-  }
-
-  deleteCellphone(id: string){
-    this._cellphoneService.deleteCellphone(id).subscribe(
-      data =>{
-        console.log(data);
-        this.getCellphones();
       }
     )
   }
 
-  specViewDetails(id: string){
+  searchCellphones(keyword: string){
+    console.log('keyword', keyword);
+    this._router.navigateByUrl('/search/'+keyword);
+
+  }
+
+  // getCellphones(){
+  //   this._cellphoneService.getCellphonesList().subscribe(
+  //     data =>{
+  //       this.cellphones = data;
+  //     }
+  //   );
+  // }
+
+  updateCellphone(id: number){
+    this._router.navigate(['update-cellphone', id])
+  }
+
+  // deleteCellphone(id: number){
+  //   this._cellphoneService.deleteCellphone(id).subscribe(
+  //     data =>{
+  //       console.log(data);
+  //       this.getCellphones();
+  //     }
+  //   )
+  // }
+
+  specViewDetails(id: number){
     this._router.navigate(['spec-view-details', id])
   }
 

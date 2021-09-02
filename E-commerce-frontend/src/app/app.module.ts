@@ -19,6 +19,8 @@ import { UpdateCellphoneComponent } from './components/update-cellphone/update-c
 import { UpdateSpecViewComponent } from './components/update-spec-view/update-spec-view.component';
 import { CreateSpecViewComponent } from './components/create-spec-view/create-spec-view.component';
 import { SpecViewDetailsComponent } from './components/spec-view-details/spec-view-details.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchfilterPipe } from './searchfilter.pipe';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { SpecViewDetailsComponent } from './components/spec-view-details/spec-vi
     UpdateCellphoneComponent,
     UpdateSpecViewComponent,
     CreateSpecViewComponent,
-    SpecViewDetailsComponent
+    SpecViewDetailsComponent,
+    SearchComponent,
+    SearchfilterPipe
     
     
   ],

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Cellphone } from '../common/cellphone';
-import { CellphoneListComponent } from '../components/cellphone-list/cellphone-list.component';
-import { Spec } from '../common/spec';
 import { MessagesService } from './messages.service';
 
 
@@ -14,41 +12,46 @@ import { MessagesService } from './messages.service';
 export class CellphoneService {
 
   private baseUrl= "http://localhost:8080/api/v1/cellphones";
-  private createUrl= "http://localhost:8080/cellphone"
-  
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 'Cellphone': 'application/json' })
-  // };
 
   constructor(
     private _http: HttpClient,
     private messageService: MessagesService) { }
 
 
-
-  getCellphonesList(): Observable<Cellphone[]>{
-    return this._http.get<GetResponseCellphones>(this.baseUrl).pipe(
-      map(response => response._embedded.cellphones)
-    );
+  getCellphonesList(theSpecId: number): Observable<Cellphone[]>{
+    const searchUrl = `${this.baseUrl}/search/cellphone?id=${theSpecId}`;
+    return this.getCellphones(searchUrl);
   
   }
 
-  createCellphone(cellphone: Cellphone): Observable<Object>{
-    return this._http.post(`${this.createUrl}/add`, cellphone);
-  }
-
-  getCellphoneById(theCellphoneId: string): Observable<any>{
-    const searchUrl = `${this.baseUrl}/search/cellphone?id=${theCellphoneId}`;
-    return this._http.get<GetResponseCellphones>(searchUrl).pipe(
+  private getCellphones(searchUrl: string): Observable<Cellphone[]> {
+    return this._http.get<GetResponseCellphones>(this.baseUrl).pipe(
       map(response => response._embedded.cellphones)
-    )
+    );
   }
 
-  updateCellphone(id: string, cellphone: Cellphone): Observable<Object>{
+  searchCellphone(keyword: string): Observable<Cellphone[]>{
+    const searchUrl = `${this.baseUrl}/search/search-model?modelName?=${keyword}`;
+    return this.getCellphones(searchUrl);
+  
+  }
+
+  // getCellphoneById(theCellphoneId: number): Observable<any>{
+  //   const searchUrl = `${this.baseUrl}/search/cellphone?id=${theCellphoneId}`;
+  //   return this._http.get<GetResponseCellphones>(searchUrl).pipe(
+  //     map(response => response._embedded.cellphones)
+  //   )
+  // }
+
+  createCellphone(cellphone: Cellphone): Observable<Object>{
+    return this._http.post(`${this.baseUrl}/add`, cellphone);
+  }
+
+  updateCellphone(id: number, cellphone: Cellphone): Observable<Object>{
     return this._http.put(`${this.baseUrl}/${id}`, cellphone);
   }
 
-  deleteCellphone(id: string): Observable<Object>{
+  deleteCellphone(id: number): Observable<Object>{
     return this._http.delete(`${this.baseUrl}/${id}`);
   }
 }

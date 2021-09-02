@@ -18,7 +18,7 @@ public class Spec {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String model;
     private String operatingSystem;
     private String camera;

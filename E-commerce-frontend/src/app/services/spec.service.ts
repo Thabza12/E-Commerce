@@ -15,8 +15,9 @@ export class SpecService {
 
   constructor(private _http: HttpClient) { }
 
-  getSpecs(): Observable<Spec[]>{
-    return this._http.get<GetResponseSpecs>(this.specUrl).pipe(
+  getSpecs(theSpecId: number): Observable<Spec[]>{
+    const specViewUrl = `${this.specUrl}/search/spec-view-details?id=${theSpecId}`;
+    return this._http.get<GetResponseSpecs>(specViewUrl).pipe(
       map(response => response._embedded.specs)
     );
   
@@ -26,18 +27,18 @@ export class SpecService {
     return this._http.post(`${this.specUrl}/add`, spec);
   }
 
-  getSpecById(id: string): Observable<any>{
+  getSpecById(id: number): Observable<any>{
     const specViewUrl = `${this.specUrl}/search/spec-view-details?id=${id}`;
     return this._http.get<GetSpecResponse>(specViewUrl).pipe(
       map(response => response._embedded.spec)
     )
   }
 
-  updateSpec(id: string, spec: Spec): Observable<Object>{
+  updateSpec(id: number, spec: Spec): Observable<Object>{
     return this._http.put(`${this.specUrl}/${id}`, spec);
   }
 
-  deleteSpec(id: string): Observable<Object>{
+  deleteSpec(id: number): Observable<Object>{
     return this._http.delete(`${this.specUrl}/${id}`);
   }
 }

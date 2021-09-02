@@ -10,9 +10,11 @@ import { SpecService } from 'src/app/services/spec.service';
 })
 export class SpecViewDetailsComponent implements OnInit {
 
-  id!: string;
+  id!: number;
   spec!: Spec;
-  currentCellphoneId!: string;
+  currentSpecId!: number;
+  specs: Spec[] = []
+  
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _specService: SpecService) { }
@@ -36,14 +38,28 @@ export class SpecViewDetailsComponent implements OnInit {
   }
 
   getSpec(){
-    const hasCellphoneId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
+    // const hasCellphoneId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
 
-    if(this.currentCellphoneId){
-      this._activatedRoute.snapshot.paramMap.get('id');
+    // if(this.hasCellphoneId){
+    //   this.currentCellphoneId = +this._activatedRoute.snapshot.paramMap.get('id');
+    // }
+
+    // this._specService.getSpecById(this.currentCellphoneId).subscribe(
+    //   data => this.spec = data
+    // )
+
+    const hasSpecId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
+
+    if (hasSpecId) {
+      this.currentSpecId = +this._activatedRoute.snapshot.paramMap.get;
+      
+    } else {
+      this.currentSpecId = 1
+      
     }
 
-    this._specService.getSpecById(this.currentCellphoneId).subscribe(
-      data => this.spec = data
+    this._specService.getSpecs(this.currentSpecId).subscribe(
+      data => this.specs = data
     )
   }
 

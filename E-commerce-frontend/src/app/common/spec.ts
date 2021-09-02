@@ -1,13 +1,13 @@
 export class Spec {
     
 
-    id!: string;
+    id!: number;
     model!: string;
     operatingSystem!: string;
     camera!: string;
     video!: string;
     sensors!: string;
     memory!: string;
-    active!: boolean;
+    cellphoneId!: number
 
 }

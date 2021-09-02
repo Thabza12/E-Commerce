@@ -19,31 +19,35 @@ export class UpdateCellphoneComponent implements OnInit {
               private _router: Router) { }
 
   ngOnInit(): void {
-    this.id = this._activatedRoute.snapshot.params['id'];
+    // this.id = this._activatedRoute.snapshot.params['id'];
 
-    this._cellphoneService.getCellphoneById(this.id).subscribe(
-      data => {
-        this.cellphone = data;
-      },
-      error => console.log(error));
+    // this._cellphoneService.getCellphoneById(this.id).subscribe(
+    //   data => {
+    //     this.cellphone = data;
+    //   },
+    //   error => console.log(error));
   }
 
-  updatecellphone(){
-    this._cellphoneService.updateCellphone(this.id, this.cellphone)
-    .subscribe(data => {
-      console.log(data);
-      this.cellphone = new Cellphone();
-      this.goToCellphoneList()
-    }, err => console.log(err))
-  }
+  // updatecellphone(){
+  //   this._cellphoneService.updateCellphone(this.id, this.cellphone)
+  //   .subscribe(data => {
+  //     console.log(data);
+  //     this.cellphone = new Cellphone();
+  //     this.goToCellphoneList()
+  //   }, err => console.log(err))
+  // }
 
   goToCellphoneList(){
     this._router.navigate(['/cellphones'])
   }
 
+  // onSubmit(){
+  //   console.log(this.cellphone);
+  //   this.updatecellphone();
+  // }
+
   onSubmit(){
-    console.log(this.cellphone);
-    this.updatecellphone();
+    
   }
 
 }

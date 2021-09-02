@@ -1,41 +1,60 @@
-  
+<div class="col-md-6" style="position: absolute;  top: 26px;">
   <div class="row">
-    <div class="col mb-5" *ngFor="let cellphone of cellphones" >
-      
-      <div class="card h-100" style="width: 250px;">
-          <!-- Product image -->  
-          <a href="spec-view-details/{{cellphone.id}}">
-            <img class="card-img-top" [src]="cellphone.imageUrl" >
-          </a>
-          <!-- Product details -->
-          <div class="card-body p-4">
-              <div class="text-center">
-                  <!-- Product name -->
-                  <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
-                  <!-- Product manufacture -->
-                  <h5 class="fw-bolder">{{cellphone.manufactureName}}</h5>
-                  <!-- Product specs -->
-                  <!-- <app-spec></app-spec> -->
-                  <!-- <button (click) = handleSpec() class="btn btn-success">Specs</button> -->
-                  <button (click) = "specViewDetails(cellphone.id)" class="btn btn-info">Specs</button>
-                  <button (click) = "updateCellphone(cellphone.id)" class = "btn btn-info" style="margin-left: 10px;">Update</button>
-                  <button (click) = "deleteCellphone(cellphone.id)" class = "btn btn-danger" style="margin-top: 10px;">Delete</button>
-                  <!-- <a class="btn btn-sm text-white btn-primary" routerLink="/spec-view/2">Specs</a> -->
-                  <!-- <button (click)="getSpec(id)" class="btn btn-info" >specs</button> -->
-                  <div>
-                  <!-- Product price -->
-                  {{cellphone.unitPrice | currency: 'R'}}
-                  </div>
-                
-                  
-              </div>
+      <div class="search-box">
+          <input type="text" #searchInput
+          (keyup.enter)="searchCellphones(searchInput.value)" 
+          class="search-txt" [(ngModel)]="searchValue" name="search" 
+          placeholder="search..">
+          <img src="assets/logos/search-24px.svg" alt="search" 
+          style="position: fixed; top: 10px;">
+          
+          <!-- <a href="searchCellphones(searchInput.value)" class="search-btn">
+              <i class="fa fa-search"></i>
+              
+          </a> -->
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col mb-5" *ngFor="let cellphone of cellphones | searchfilter:searchValue">
+
+    <div class="card h-100" style="width: 250px;">
+      <!-- Product image -->
+      <a href="spec-view-details/{{cellphone.id}}">
+        <img class="card-img-top" [src]="cellphone.imageUrl">
+      </a>
+      <!-- Product details -->
+      <div class="card-body p-4">
+        <div class="text-center">
+          <!-- Product name -->
+          <h5 class="fw-bolder">{{cellphone.modelName}}</h5>
+          <!-- Product manufacture -->
+          <h5 class="fw-bolder">{{cellphone.manufactureName}}</h5>
+          <!-- Product specs -->
+          <!-- <app-spec></app-spec> -->
+          <!-- <button (click) = handleSpec() class="btn btn-success">Specs</button> -->
+          <button (click)="specViewDetails(cellphone.id)" class="btn btn-info">Specs</button>
+          <button (click)="updateCellphone(cellphone.id)" class="btn btn-info"
+            style="margin-left: 10px;">Update</button>
+          <!-- <button (click) = "deleteCellphone(cellphone.id)" class = "btn btn-danger" style="margin-top: 10px;">Delete</button> -->
+          <!-- <a class="btn btn-sm text-white btn-primary" routerLink="/spec-view/2">Specs</a> -->
+          <!-- <button (click)="getSpec(id)" class="btn btn-info" >specs</button> -->
+          <div>
+            <!-- Product price -->
+            {{cellphone.unitPrice | currency: 'R'}}
           </div>
-          <!-- Product actions -->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add Cart</a></div>
-          </div>
+
+
+        </div>
+      </div>
+      <!-- Product actions -->
+      <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add Cart</a></div>
       </div>
     </div>
   </div>
-
-
+  <div *ngIf="cellphones?.length == 0" class="col-md-12 alert alert-warning mt-3">
+    No cellphones found
+  </div>
+</div>
